@@ -45,6 +45,7 @@ def main():
         b_ids+=[line[3].upper() for line in id_to_list(args.id_b, args.nodes)]
         b_ids = list(set(b_ids))
 
+        print('Comparing protein: ' + args.id_a + ' with ' + args.id_b)
         soon_csv = {}
 
         headers = ['common', 'new_in_a', 'lacks_in_a', 'new_in_b', 'lacks_in_b']
@@ -77,6 +78,8 @@ def main():
         df.replace(np.nan, '', regex=True)
         df = df.reindex(columns=headers)
         df.to_csv(args.output, index=False)
+
+        print('File was saved as '+str(args.output))
     except:
         print('Data were given unproperly.')
 
