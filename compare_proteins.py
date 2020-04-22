@@ -12,14 +12,14 @@ def id_to_list(id, nodes):
     if nodes == None:
         nodes = 10
     elif int(nodes) < 1:
-        print('Wrong escore value.')
+        print('Wrong nodes value.')
         sys.exit()
     else:
         pass
 
     url = 'https://string-db.org/api/tsv-no-header/network?identifiers='+str(id)+'&add_nodes='+str(nodes)
 
-    response = requests.post(url)
+    response = requests.get(url)
 
     tsv = []
 
